@@ -15,7 +15,14 @@
         <p id="traversal-indicator"></p>
         <p id="traversal-indicator"></p>
         <p id='note'>Note: If the tree is too large, zoom out and refresh!</p>
-
+        <div id="game-controls">
+            <p id="timer">Time: 0s</p> 
+            <div class="button-container">
+                <button id="restart-btn">🔄 Restart</button>
+                <button onclick="window.location.href='levels.html'">⬅ Back to Levels</button>
+            </div>
+            <p id="feedback"></p>
+        </div>git level-status
     </header>
 
     <main>
@@ -24,14 +31,7 @@
             <div id="tree-container">
             </div>
         </div>
-        <div id="game-controls">
-            <p id="timer">Time: 0s</p> 
-            <div class="button-container">
-                <button id="restart-btn">🔄 Restart</button>
-                <button onclick="window.location.href='levels.html'">⬅ Back to Levels</button>
-            </div>
-            <p id="feedback"></p>
-        </div>
+        
         
     </main>
     <div id="footer-container"></div>
