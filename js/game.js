@@ -34,17 +34,17 @@ document.addEventListener("DOMContentLoaded", () => {
         17: { name: "Level 17", traversal: "inorder", size: 38, timeLimit: 60 },
         18: { name: "Level 18", traversal: "postorder", size: 40, timeLimit: 60 },
         19: { name: "Level 19", traversal: "random", size: 42, timeLimit: 60 },
-        20: { name: "🌿 Mystic Grove", traversal: "random", size: 45, timeLimit: 60 }, 
-        21: { name: "Level 21", traversal: "preorder", size: 48, timeLimit: 60 },
-        22: { name: "Level 22", traversal: "inorder", size: 50, timeLimit: 60 },
-        23: { name: "Level 23", traversal: "postorder", size: 52, timeLimit: 60 },
-        24: { name: "Level 24", traversal: "random", size: 55, timeLimit: 60 },
-        25: { name: "Level 25", traversal: "random", size: 58, timeLimit: 60 },
-        26: { name: "Level 26", traversal: "preorder", size: 60, timeLimit: 60 },
-        27: { name: "Level 27", traversal: "inorder", size: 63, timeLimit: 60 },
-        28: { name: "Level 28", traversal: "postorder", size: 65, timeLimit: 60 },
-        29: { name: "Level 29", traversal: "random", size: 68, timeLimit: 60 },
-        30: { name: "🌌 The Eternal Tree", traversal: "random", size: 70, timeLimit: 60 } 
+        20: { name: "🌿 Mystic Grove", traversal: "random", size: 41, timeLimit: 60 }, 
+        21: { name: "Level 21", traversal: "preorder", size: 42, timeLimit: 60 },
+        22: { name: "Level 22", traversal: "inorder", size: 43, timeLimit: 60 },
+        23: { name: "Level 23", traversal: "postorder", size: 42, timeLimit: 60 },
+        24: { name: "Level 24", traversal: "random", size: 41, timeLimit: 60 },
+        25: { name: "Level 25", traversal: "random", size: 42, timeLimit: 60 },
+        26: { name: "Level 26", traversal: "preorder", size: 43, timeLimit: 60 },
+        27: { name: "Level 27", traversal: "inorder", size: 44, timeLimit: 60 },
+        28: { name: "Level 28", traversal: "postorder", size: 45, timeLimit: 60 },
+        29: { name: "Level 29", traversal: "random", size: 44, timeLimit: 60 },
+        30: { name: "🌌 The Eternal Tree", traversal: "random", size: 45, timeLimit: 60 } 
     };
     
 
@@ -251,15 +251,18 @@ console.log("Generated Tree:", JSON.stringify(tree, null, 2));
     function drawLine(parentNode, childNode) {
         let svg = document.getElementById("tree-lines");
     
+        // Get the parent and child node positions relative to the entire document
         let parentRect = parentNode.getBoundingClientRect();
         let childRect = childNode.getBoundingClientRect();
         let svgRect = svg.getBoundingClientRect();  // Get SVG's position
     
+        // Calculate the center points of the parent and child nodes
         let parentX = parentRect.left + parentRect.width / 2 - svgRect.left;
         let parentY = parentRect.top + parentRect.height / 2 - svgRect.top;
         let childX = childRect.left + childRect.width / 2 - svgRect.left;
         let childY = childRect.top + childRect.height / 2 - svgRect.top;
     
+        // Create an SVG line element
         let line = document.createElementNS("http://www.w3.org/2000/svg", "line");
         line.setAttribute("x1", parentX);
         line.setAttribute("y1", parentY);
@@ -268,8 +271,17 @@ console.log("Generated Tree:", JSON.stringify(tree, null, 2));
         line.setAttribute("stroke", "#aaa");
         line.setAttribute("stroke-width", "2");
     
+        // Append the line to the SVG container
         svg.appendChild(line);
     }
+    
+    // Trigger line drawing after DOM is fully loaded
+    window.addEventListener('load', function() {
+        let parentNode = document.getElementById("parentNode"); // Replace with actual node id
+        let childNode = document.getElementById("childNode"); // Replace with actual node id
+        drawLine(parentNode, childNode);  // Call your function to draw the line
+    });
+    
     
     
     function calculateWidths(tree) {
@@ -278,7 +290,7 @@ console.log("Generated Tree:", JSON.stringify(tree, null, 2));
         let leftWidth = calculateWidths(tree.left);
         let rightWidth = calculateWidths(tree.right);
     
-        let minSpacing = 100;
+        let minSpacing = 90;
     
         if (!tree.left && !tree.right) {
             tree.width = minSpacing; 
@@ -307,7 +319,8 @@ console.log("Generated Tree:", JSON.stringify(tree, null, 2));
         container.appendChild(nodeDiv);
     
         if (parentNode) {
-            drawLine(parentNode, nodeDiv);
+            // Delay drawing lines to ensure the parent node has been rendered
+            setTimeout(() => drawLine(parentNode, nodeDiv), 100); // Add a delay before drawing the line
         }
     
         let leftWidth = tree.left ? tree.left.width : 0;
@@ -321,7 +334,6 @@ console.log("Generated Tree:", JSON.stringify(tree, null, 2));
             generateTreeUI(childNode, container, nodeDiv, x, y + 80, depth + 1);
         }
     }
-
     
 
 

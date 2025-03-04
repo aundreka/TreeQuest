@@ -316,8 +316,18 @@ p {
         padding-top: 10px;
     }
     #tree-container {
-        min-width: 1000px;
-        margin-left: 160px;
+        min-width: unset;  /* Remove the fixed width */
+        width: 100%;  /* Allow it to expand with the viewport */
+        margin-left: 0;  /* Reset margin */
+        overflow-x: auto;
+        position: relative ;  /* Allow horizontal scrolling if needed */
+    }
+
+    #tree-lines {
+        width: 100%;  /* Ensure it takes full width */
+        left: 0; 
+        position:absolute;
+        top:0; /* Ensure it aligns to the left */
     }
     p {
         font-size: 10px;
