@@ -143,3 +143,45 @@ h2 {
 #levels-container, #achievements-list {
     animation: fadeIn 0.8s ease-out;
 }
+@media (max-width: 600px) {
+    body {
+        padding: 5px;
+    }
+
+    h1 {
+        font-size: 18px;
+        margin-bottom: 15px;
+    }
+
+    #levels-container {
+        grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+        gap: 10px;
+    }
+
+    .level-card {
+        width: 90px;
+        height: 110px;
+        padding: 8px;
+        border-radius: 10px;
+    }
+
+    .level-btn {
+        font-size: 9px;
+        padding: 10px;
+        border-radius: 6px;
+    }
+
+    .star-container {
+        font-size: 10px;
+    }
+
+    h2 {
+        font-size: 16px;
+        margin-top: 20px;
+    }
+
+    .achievement {
+        font-size: 11px;
+        padding: 10px;
+    }
+}
