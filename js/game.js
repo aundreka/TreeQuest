@@ -19,7 +19,7 @@ document.addEventListener("DOMContentLoaded", () => {
         2: { name: "Inorder Tutorial", traversal: "inorder", size: 7, timeLimit: Infinity },
         3: { name: "Postorder Tutorial", traversal: "postorder", size: 7, timeLimit: Infinity },
         4: { name: "Level 4", traversal: "random", size: 10, timeLimit: 60 },
-        5: { name: "Level 5", traversal: "random", size: 12, timeLimit: 5 },
+        5: { name: "Level 5", traversal: "random", size: 12, timeLimit: 60 },
         6: { name: "Level 6", traversal: "random", size: 15, timeLimit: 60 },
         7: { name: "Level 7", traversal: "preorder", size: 18, timeLimit: 60 },
         8: { name: "Level 8", traversal: "inorder", size: 18, timeLimit: 60 },
