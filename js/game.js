@@ -171,20 +171,30 @@ console.log("Generated Tree:", JSON.stringify(tree, null, 2));
         }
     }
 
-    function showTutorial() {
-        feedback.innerHTML = "Follow the traversal order: <strong>Root → Left → Right</strong>";
+    function showTutorial(level) {
+        let traversalOrder;
+    
+        if (levelId === 2) {
+            traversalOrder = "Left → Root → Right"; 
+        } else if (levelId === 3) {
+            traversalOrder = "Left → Right → Root"; 
+        } else {
+            traversalOrder = "Root → Left → Right"; 
+        }
+    
+        feedback.innerHTML = `Follow the traversal order: <strong>${traversalOrder}</strong>`;
         timerDisplay.style.display = "none"; 
-
+    
         let index = 0;
     
         function highlightStep() {
             if (index < correctSequence.length) {
                 let node = document.querySelector(`.tree-node[data-value="${correctSequence[index]}"]`);
                 node.classList.add("highlight");
-                
+    
                 let stepText = document.createElement("div");
                 stepText.className = "tutorial-step";
-                stepText.textContent = getTraversalText(index);
+                stepText.textContent = getTraversalText(index, currentLevel.traversal);  // Pass traversal type
                 node.appendChild(stepText);
     
                 setTimeout(() => {
@@ -201,9 +211,18 @@ console.log("Generated Tree:", JSON.stringify(tree, null, 2));
         highlightStep();
     }
     
-    function getTraversalText(index) {
-        return index === 0 ? "Root" : index % 2 === 1 ? "Left" : "Right";
+    
+    
+    function getTraversalText(index, traversalType) {
+        if (traversalType === "preorder") {
+            return index === 0 ? "Root" : index % 2 === 1 ? "Left" : "Right";
+        } else if (traversalType === "inorder") {
+            return index % 2 === 0 ? "Left" : index === correctSequence.length - 1 ? "Right" : "Root";
+        } else if (traversalType === "postorder") {
+            return index % 2 === 0 ? "Left" : index % 2 === 1 ? "Right" : "Root";
+        }
     }
+    
     
 
     function startTutorial() {
