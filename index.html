@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TreeQuest - Learn Binary Tree Traversal</title>
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/footer.css">
+
+    <script defer src="js/main.js"></script>
+</head>
+<body>
+    
+    <main>
+        <section class="hero">
+            <h1>Welcome to TreeQuest</h1>
+            <p>Master binary tree traversal with interactive learning!</p>
+          <br>  <a href="pages/levels.html"><button id="start-game">START</button></a>
+        </section>
+    </main>
+    <div id="footer-container"></div>
+
+    
+</body>
+<script>
+    fetch('components/footer.html')
+        .then(response => response.text())
+        .then(data => document.getElementById('footer-container').innerHTML = data);
+</script>
+</html>

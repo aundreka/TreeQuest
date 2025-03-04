@@ -1,0 +1,83 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Press Start 2P', cursive;
+    background: url('../assets/tree.gif') no-repeat center center/cover;
+    color: #fff;
+    text-align: center;
+}
+#start-game {
+    font-family: 'Press Start 2P', cursive; /* Ensure the correct font is applied */
+    background: linear-gradient(45deg, #ffcc00, #ff6600);
+    color: black;
+    border: none;
+    padding: 20px 40px;
+    font-size: 2rem;
+    cursor: pointer;
+    border-radius: 12px;
+    box-shadow: 0px 6px 14px rgba(255, 165, 0, 0.9);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+#start-game:hover {
+    transform: scale(1.2);
+    box-shadow: 0px 8px 16px rgba(255, 140, 0, 1);
+}
+
+/* Navigation Bar */
+#navbar {
+    background: rgba(0, 0, 0, 0.7);
+    padding: 15px;
+    font-size: 18px;
+    text-transform: uppercase;
+}
+
+/* Hero Section */
+.hero {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    text-shadow: 3px 3px 12px rgba(0, 0, 0, 0.9);
+}
+
+.hero h1 {
+    font-size: 4rem; /* Increased font size */
+    margin-bottom: 30px;
+}
+
+.hero p {
+    font-size: 1.5rem; /* Increased paragraph size */
+    margin-bottom: 40px;
+}
+
+/* Start Button */
+#start-game {
+    background: linear-gradient(45deg, #ffcc00, #ff6600);
+    color: black;
+    border: none;
+    padding: 20px 40px; /* Increased button size */
+    font-size: 2rem; /* Larger text */
+    cursor: pointer;
+    border-radius: 12px;
+    box-shadow: 0px 6px 14px rgba(255, 165, 0, 0.9);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+#start-game:hover {
+    transform: scale(1.2);
+    box-shadow: 0px 8px 16px rgba(255, 140, 0, 1);
+}
+
+/* Footer */
+#footer {
+    background: rgba(0, 0, 0, 0.7);
+    padding: 20px;
+    font-size: 16px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}

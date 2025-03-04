@@ -1,0 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+#footer {
+    background: rgba(255, 255, 255); 
+    color: #272224;
+    font-family: 'Press Start 2P', cursive;
+    text-align: center;
+    padding: 15px 0;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    font-size: 14px;
+}
+
+#footer p {
+    margin: 0;
+}

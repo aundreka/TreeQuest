@@ -1,0 +1,155 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+body {
+    font-family: 'Press Start 2P', cursive;
+    background-color: white;
+    color: #333;
+    text-align: center;
+    margin: 0;
+    padding: 20px;
+}
+
+/* Title Styles */
+h1 {
+    font-size: 32px;
+    font-weight: bold;
+    color: #2c3e50; 
+    margin-bottom: 30px;
+}
+
+/* Levels Container */
+#levels-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    padding: 20px;
+}
+
+/* Level Card */
+.level-card {
+    width: 120px;
+    height: 150px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 15px;
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.2);
+    padding: 15px;
+    text-align: center;
+}
+
+/* Level Button */
+.level-btn {
+    font-family: 'Press Start 2P', cursive;
+    font-size: 12px;
+    padding: 15px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: transform 0.2s;
+    background: white;
+    color: black;
+    width: 100%;
+    text-transform: uppercase;
+}
+
+.level-btn.unlocked:hover {
+    transform: scale(1.1);
+}
+
+/* Locked Level */
+.level-btn.locked {
+    background: gray;
+    color: white;
+    cursor: not-allowed;
+}
+
+/* Star Rating */
+.star-container {
+    margin-top: 10px;
+    font-size: 14px;
+    font-weight: bold;
+    color: #222;
+}
+
+
+.level-btn:hover:not(.locked) {
+    transform: scale(1.08) rotate(1deg);
+    box-shadow: 0 0 30px #ffe8ee;
+    z-index: 2;
+    -webkit-transform: scale(1.08) rotate(1deg);
+    -moz-transform: scale(1.08) rotate(1deg);
+    -ms-transform: scale(1.08) rotate(1deg);
+    -o-transform: scale(1.08) rotate(1deg);
+}
+
+
+/* Locked Levels */
+.level-btn.locked {
+    background: linear-gradient(145deg, #bdc3c7, #95a5a6);
+    cursor: not-allowed;
+    box-shadow: none;
+    border: 4px solid #7f8c8d;
+    position: relative;
+}
+
+.level-btn.locked::after {
+    content: "🔒";
+    font-size: 24px;
+    position: absolute;
+    color: white;
+}
+
+/* Achievements Section */
+h2 {
+    font-size: 24px;
+    font-weight: bold;
+    color: #2c3e50;
+    margin-top: 40px;
+}
+
+#achievements-list {
+    list-style: none;
+    padding: 0;
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+/* Achievement Item */
+.achievement {
+    background: rgba(0, 0, 0, 0.05);
+    padding: 15px;
+    margin: 10px 0;
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    transition: transform 0.2s ease;
+}
+
+.achievement.unlocked {
+    border-left: 6px solid #27ae60;
+    background: rgba(39, 174, 96, 0.2);
+}
+
+.achievement.locked {
+    opacity: 0.5;
+}
+
+.achievement:hover {
+    transform: scale(1.05);
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+#levels-container, #achievements-list {
+    animation: fadeIn 0.8s ease-out;
+}

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TreeQuest - Play</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/themes.css">
+    <link rel="stylesheet" href="../css/footer.css">
+
+</head>
+<body>
+    <header>
+        <h1 id="level-title">Level</h1>
+        <p id="traversal-indicator"></p>
+        <p id="traversal-indicator"></p>
+        <p id='note'>Note: If the tree is too large, zoom out and refresh!</p>
+
+    </header>
+
+    <main>
+        <div id="game-container">
+            <svg id="tree-lines"></svg>
+            <div id="tree-container">
+            </div>
+        </div>
+        <div id="game-controls">
+            <p id="timer">Time: 0s</p> 
+            <div class="button-container">
+                <button id="restart-btn">🔄 Restart</button>
+                <button onclick="window.location.href='levels.html'">⬅ Back to Levels</button>
+            </div>
+            <p id="feedback"></p>
+        </div>
+        
+    </main>
+    <div id="footer-container"></div>
+
+    <script src="../js/game.js"></script>
+    <script src="../js/main.js"></script>
+    <script>
+        fetch('../components/footer.html')
+            .then(response => response.text())
+            .then(data => document.getElementById('footer-container').innerHTML = data);
+    </script>
+</body>
+</html>
