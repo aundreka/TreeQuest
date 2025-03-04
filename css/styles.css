@@ -312,30 +312,16 @@ p {
 
 @media (max-width: 480px) {
     h1 {
-        font-size: 16px;
+        font-size: 18px;
         padding-top: 10px;
     }
-    #tree-container {
-        min-width: unset;  /* Remove the fixed width */
-        width: 100%;  /* Allow it to expand with the viewport */
-        margin-left: 0;  /* Reset margin */
-        overflow-x: auto;
-        position: relative ;  /* Allow horizontal scrolling if needed */
-    }
 
-    #tree-lines {
-        width: 100%;  /* Ensure it takes full width */
-        left: 0; 
-        position:absolute;
-        top:0; /* Ensure it aligns to the left */
-    }
     p {
-        font-size: 10px;
+        font-size: 12px;
     }
 
-    
     #note {
-        font-size: 6px; 
+        font-size: 8px; 
         max-width: 600px;
     }
 
@@ -350,26 +336,33 @@ p {
         overflow-x: auto; 
     
     }
+
+    #tree-container {
+        min-width: 1000px;
+        margin-left: 160px;
+
+    }
+
     #timer, #feedback {
-        font-size: 8px;
+        font-size: 10px;
         padding: 0px; 
         border-radius: 6px; 
     }
-    
+
     .tree-node {
-        width: 30px;
-        height: 30px;
-        font-size: 10px;
-        line-height: 30px;
+        width: 40px;
+        height: 40px;
+        font-size: 14px;
+        line-height: 40px;
     }
 
     .try-again-btn {
-        font-size: 10px;
-        padding: 8px 16px;
+        font-size: 12px;
+        padding: 10px 20px;
     }
 
     .button-container button {
-        font-size: 10px;
-        padding: 4px 8px;
+        font-size: 12px;
+        padding: 5px 10px;
     }
 }
