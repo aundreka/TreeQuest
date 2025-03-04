@@ -21,30 +21,33 @@ document.addEventListener("DOMContentLoaded", () => {
     
 
     function loadProgress() {
-        console.log("Loading levels...");
-        levelsContainer.innerHTML = ""; 
+        console.log("Progress data:", progress);
+        levelsContainer.innerHTML = "";
     
         for (let level = 1; level <= totalLevels; level++) {
             if (!progress[level]) {
                 progress[level] = { score: 0, stars: 0 };
             }
     
-            const isUnlocked = level === 1 || progress[level - 1]; 
+            const isUnlocked = (level <= 3) || (progress[level - 1] && progress[level - 1].stars >= 2);
             console.log(`Checking level ${level}:`, isUnlocked ? "Unlocked" : "Locked");
     
-            const levelData = progress[level] || { score: 0, stars: 0 };
+            const levelData = progress[level];
             addLevelButton(level, levelData.score, levelData.stars, isUnlocked);
         }
         localStorage.setItem("treequest_progress", JSON.stringify(progress));
     }
+    
     
 
     function addLevelButton(level, score, stars, isUnlocked) {
         const levelButton = document.createElement("button");
         levelButton.classList.add("level-btn");
     
+        const starRating = "⭐".repeat(Math.min(3, stars)); 
+    
         levelButton.innerHTML = isUnlocked
-            ? `Level ${level} - ⭐ ${stars} | Score: ${score}`
+            ? `Level ${level} - ${starRating} | Score: ${score}`
             : `Level ${level} <span class="lock-icon">🔒</span>`; 
     
         if (isUnlocked) {
@@ -61,26 +64,27 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     function checkAndUnlockNextLevels() {
-    for (let completedLevel = 1; completedLevel <= totalLevels; completedLevel++) {
-        if (progress[completedLevel]) {
-            const nextLevel = completedLevel + 1;
-            if (nextLevel <= totalLevels && !progress[nextLevel]) {
-                progress[nextLevel] = { score: 0, stars: 0 };
-                localStorage.setItem("treequest_progress", JSON.stringify(progress));
-                showUnlockNotification(nextLevel);
-
-                setTimeout(() => {
-                    const nextLevelButton = document.querySelector(`button:nth-child(${nextLevel})`);
-                    if (nextLevelButton) {
-                        nextLevelButton.classList.add("unlocked");
-                        nextLevelButton.disabled = false;
-                        nextLevelButton.innerHTML = `Level ${nextLevel} (${getTraversalForLevel(nextLevel)}) - ⭐ 0 | Score: 0`;
-                    }
-                }, 500);
+        for (let completedLevel = 1; completedLevel < totalLevels; completedLevel++) {
+            if (progress[completedLevel] && progress[completedLevel].stars >= 2) {
+                const nextLevel = completedLevel + 1;
+                if (!progress[nextLevel]) {
+                    progress[nextLevel] = { score: 0, stars: 0 };
+                    localStorage.setItem("treequest_progress", JSON.stringify(progress));
+                    showUnlockNotification(nextLevel);
+    
+                    setTimeout(() => {
+                        const nextLevelButton = document.querySelector(`button:nth-child(${nextLevel})`);
+                        if (nextLevelButton) {
+                            nextLevelButton.classList.add("unlocked");
+                            nextLevelButton.disabled = false;
+                            nextLevelButton.innerHTML = `Level ${nextLevel} (${getTraversalForLevel(nextLevel)}) - ⭐ 0 | Score: 0`;
+                        }
+                    }, 500);
+                }
             }
         }
     }
-}
+    
 
     function showUnlockNotification(level) {
         const notification = document.createElement("div");
@@ -96,14 +100,14 @@ document.addEventListener("DOMContentLoaded", () => {
     function addLevelCard(level, score, stars, isUnlocked) {
         const levelCard = document.createElement("div");
         levelCard.classList.add("level-card");
-        levelCard.style.backgroundColor = getRandomPastelColor(); 
+        levelCard.style.backgroundColor = getRandomPastelColor();
     
         const levelButton = document.createElement("button");
         levelButton.classList.add("level-btn");
     
         levelButton.innerHTML = isUnlocked
             ? `Level ${level} - ${getTraversalForLevel(level)}`
-            : `Level ${level} <span class="lock-icon">🔒</span>`; 
+            : `Level ${level} <span class="lock-icon">🔒</span>`;
     
         if (isUnlocked) {
             levelButton.classList.add("unlocked");
@@ -114,15 +118,18 @@ document.addEventListener("DOMContentLoaded", () => {
             levelButton.disabled = true;
             levelButton.classList.add("locked");
         }
-
+    
         const starContainer = document.createElement("div");
         starContainer.classList.add("star-container");
-        starContainer.innerHTML = `⭐ ${stars} | Score: ${score}`;
-
+    
+        const starRating = "⭐".repeat(Math.max(1, Math.min(stars, 3)));
+        starContainer.innerHTML = `${starRating} ${stars}/3 | Score: ${score}`;
+    
         levelCard.appendChild(levelButton);
         levelCard.appendChild(starContainer);
         levelsContainer.appendChild(levelCard);
     }
+    
 
     function getRandomPastelColor() {
         const pastelColors = [

@@ -9,7 +9,6 @@ body {
     padding: 20px;
 }
 
-/* Title Styles */
 h1 {
     font-size: 32px;
     font-weight: bold;
@@ -17,7 +16,6 @@ h1 {
     margin-bottom: 30px;
 }
 
-/* Levels Container */
 #levels-container {
     display: flex;
     flex-wrap: wrap;
@@ -26,7 +24,6 @@ h1 {
     padding: 20px;
 }
 
-/* Level Card */
 .level-card {
     width: 120px;
     height: 150px;
@@ -40,7 +37,6 @@ h1 {
     text-align: center;
 }
 
-/* Level Button */
 .level-btn {
     font-family: 'Press Start 2P', cursive;
     font-size: 12px;
@@ -59,14 +55,12 @@ h1 {
     transform: scale(1.1);
 }
 
-/* Locked Level */
 .level-btn.locked {
     background: gray;
     color: white;
     cursor: not-allowed;
 }
 
-/* Star Rating */
 .star-container {
     margin-top: 10px;
     font-size: 14px;
@@ -86,7 +80,6 @@ h1 {
 }
 
 
-/* Locked Levels */
 .level-btn.locked {
     background: linear-gradient(145deg, #bdc3c7, #95a5a6);
     cursor: not-allowed;
@@ -102,7 +95,6 @@ h1 {
     color: white;
 }
 
-/* Achievements Section */
 h2 {
     font-size: 24px;
     font-weight: bold;
@@ -117,7 +109,6 @@ h2 {
     margin: 0 auto;
 }
 
-/* Achievement Item */
 .achievement {
     background: rgba(0, 0, 0, 0.05);
     padding: 15px;
@@ -144,7 +135,6 @@ h2 {
     transform: scale(1.05);
 }
 
-/* Animations */
 @keyframes fadeIn {
     from { opacity: 0; transform: translateY(10px); }
     to { opacity: 1; transform: translateY(0); }
