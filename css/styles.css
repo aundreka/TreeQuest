@@ -269,6 +269,12 @@ p {
         min-height: 800px;
         max-width: 100vw;
         padding: 20px;
+        background: none;
+        box-shadow: none;
+        backdrop-filter: none;
+        border: none;
+        overflow: visible; 
+    
     }
 
     #tree-container {
@@ -316,7 +322,14 @@ p {
 
     #game-container {
         min-height: 800px;
+        max-width: 100vw;
         padding: 8px;
+        background: none;
+        box-shadow: none;
+        backdrop-filter: none;
+        border: none;
+        overflow: visible; 
+    
     }
     #timer, #feedback {
         font-size: 8px;
